@@ -3,13 +3,6 @@ require_once "./functions.php";
 
 session_start();
 
-$password_length=0;
-
-if(isset($_GET["password_length"]) && is_numeric($_GET["password_length"]) && $_GET["password_length"] > 0){
-    $password_length = $_GET["password_length"];
-    $_SESSION['password'] = generate_password($password_length);
-}
-
 ?>
 
 
@@ -19,7 +12,7 @@ if(isset($_GET["password_length"]) && is_numeric($_GET["password_length"]) && $_
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Strong password</title>
+        <title>Generated password</title>
         
         <style>
             * {
@@ -41,7 +34,11 @@ if(isset($_GET["password_length"]) && is_numeric($_GET["password_length"]) && $_
 
 <!-- Main -->
 <main>
-    <?php include_once "./components/Main.php"; ?>
+        <div class="alert alert-success col-6 mx-auto" role="alert">
+            Here it is your password: 
+            <br>
+            <?php echo $_SESSION['password']; ?>
+        </div>
 
 </main>
 
