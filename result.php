@@ -34,12 +34,15 @@ session_start();
 
 <!-- Main -->
 <main>
-        <div class="alert alert-success col-6 mx-auto" role="alert">
-            Here it is your password: 
-            <br>
-            <?php echo $_SESSION['password']; ?>
-        </div>
-
+    <div class="container d-flex flex-column align-items-center">
+        
+        <h1 class="my-2" >Strong password generator</h1>
+            <div class="alert alert-success col-6 mx-auto" role="alert">
+                Here it is your password: 
+                <br>
+                <?php echo $_SESSION['password']; ?>
+            </div>
+    </div>
 </main>
 
 <!-- Footer -->

@@ -5,9 +5,25 @@ session_start();
 
 $password_length=0;
 
-if(isset($_GET["password_length"]) && is_numeric($_GET["password_length"]) && $_GET["password_length"] > 0){
+
+
+if(isset($_GET["password_length"]) && (isset($_GET["numbers"]) || isset($_GET["uppercase"]) || isset($_GET["lowercase"]) || isset($_GET["special"]))){
     $password_length = $_GET["password_length"];
-    $_SESSION['password'] = generate_password($password_length);
+    $character_types = [
+        'numbers' => isset($_GET["numbers"]),
+        'uppercase' => isset($_GET["uppercase"]),
+        'lowercase' => isset($_GET["lowercase"]),
+        'special' => isset($_GET["special"])
+    ];
+    
+    if(validateForm($password_length, $character_types)){
+        $_SESSION['password'] = generate_password($password_length, $character_types);
+        header('Location: ./result.php');
+        exit;
+    }else{
+        header('Location: ./index.php');
+        exit;
+    }
 }
 
 ?>
