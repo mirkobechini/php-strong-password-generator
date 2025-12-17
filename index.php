@@ -62,7 +62,7 @@ if(isset($_GET["password_length"]) && (isset($_GET["numbers"]) || isset($_GET["u
 </main>
 
 <!-- Footer -->
-<?php include_once "./components/Footer.php"; ?>
+<?php include_once "../../boolean/components/Footer.php"; ?>
 
 </body>
 </html>
